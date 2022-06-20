@@ -1,20 +1,24 @@
 import { NextPage } from 'next';
+// props 타입 https://melvingeorge.me/blog/set-types-for-functional-components-props-typescript-nextjs
 
-interface IBlogProps {}
-
-const Blog: NextPage<IBlogProps> = () => {
-
+interface IBlogProps {
+    posts: Array<any>
 }
 
-function Blog ({posts}) {
+const Blog: NextPage<IBlogProps> = ({posts}) => {
     return (
         <>
             <ul>
-                {posts.map((post)=>(
-                    <li>{post.title}</li>
-                ))}
+                {
+                    posts.map((post)=>(
+                        <li>{post.title}</li>
+                    ))
+                }
+
             </ul>
         </>
     )
 }
+
+
 export default Blog;
