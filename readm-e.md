@@ -34,7 +34,9 @@ SSG 방식은 다시 데이터가 없는 경우와, 데이터가 존재하는 �
 ### 페이지 경로 : getStaticPaths, getStaticProps 사용
 
 #### 외부 데이터 가져오는 경우 : getStaticProps 
-pre-rendering방식으로 동일한 파일에서 export된 async 함수를 형태로 사용한다. getStaticProps를 통해 빌드시 호출되어 가져온 데이터를 페이지의 props로 전달할 수 있다.
+pre-rendering방식으로 동일한 파일에서 export된 async 함수를 형태로 사용한다. getStaticProps를 통해 빌드시 호출되어 가져온 데이터를 페이지의 props로 전달할 수 있다. 
+- 페이지가 사전 렌더링되어 빠르게 화면을 구현해야 하는 경우
+- 데이터가 공개적으로 캐시되어도 상관없는 경우
 => next-docs/01/pages/blog.tsx 파일 참고
 
 #### 동적페이지에 외부 데이터 가져오는 경우 : 
@@ -52,4 +54,12 @@ export와 async, getServerSideProps를 통해 구현한다.
 매 업데이트 되는 등 데이터의 변화가 많은 페이지인 경우 getServerSideProps를 통해 SSR방식으로 구현한다. getServerSideProps의 가장 큰 특징은 빌드때가 아닌 사용자의 매 요청시에 렌더링이 이루어진다는 것이다.
 getServerSideProps는 페이지 파일에서만 가능하다.
 // getServerSideProps에 getStaticPaths를 사용해서는 안 된다.
+// getServerSideProps는 기본적으로 빌드 시 렌더링된 페이지를 사용자가 요청시 표시해준다.
+
+### 클라이언트측에서 데이터 가져오기 
+~ 페이지를 미리 렌더링할 필요는 없지만, 데이터가 계속 업데이트되는 페이지인 경우
+
+// 렌더링 참고 사이트 
+// https://velog.io/@devstone/Next.js-100-%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0-feat.-initialProps-webpack-storybook
+
 

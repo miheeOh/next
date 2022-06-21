@@ -36,7 +36,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 // 아래 중요 =========
 // 계속 paths가 잡히지 않는 것으로 나왔는데 id의 타입의 숫자여서 그랬다. string 타입으로 바꾸어 주니 정상적으로 처리 되었다.
 
-export const getStaticProps: GetStaticProps = async ({params}) => {
+
+export const getStaticProps: GetStaticProps<any> = async ({params}) => {
     const res = await fetch(`http://localhost:3000/board/${params.id}`);
     const post = await res.json();
     return {
